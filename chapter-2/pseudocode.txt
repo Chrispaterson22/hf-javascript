@@ -1,0 +1,23 @@
+DECLARE three variables to hold the location of each cell of the ship.
+Call them location1, location2, location3.
+DECLARE a variable to hold the user's current guess. Call it guess.
+DECLARE a variable to hold the number of hits. Call it hits and set it to 0.
+DECLARE a variable to hold the number of guesses. Call it guesses and set to 0.
+DECLARE a variable to keep track of whether the ship is sunk or not. call it isSunk and set to false.
+
+LOOP: while ship is not sunk
+  GET user guess
+  COMPARE the users guess
+  IF the users guess is invalid
+    TELL user to enter a valid number
+  ELSE
+    ADD one to guesses
+    IF the users guess matches a location
+      ADD one to the number of hits
+      IF number of hits is 3
+        SET isSunk to true
+        TELL user "You sank the battleship"
+      END IF
+    END IF
+  END ELSE
+END LOOP
