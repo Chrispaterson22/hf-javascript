@@ -21,3 +21,4 @@ LOOP: while ship is not sunk
     END IF
   END ELSE
 END LOOP
+TELL user stats
