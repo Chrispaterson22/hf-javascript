@@ -2,10 +2,20 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Car Objects</title>
+    <title>Car search pequalify</title>
   </head>
   <body>
     <script type="text/javascript">
+      var taxi = {
+        make: "Webville Motors",
+        model: "Taxi",
+        year: 1955,
+        color: "yellow",
+        passengers: 4,
+        convertible: false,
+        mileage: 281341
+      };
+
       var chevy = {
         make : "Chevy",
         model : "Bel Air",
@@ -35,29 +45,24 @@
         convertible: false,
         mileage: 88000
       };
-      // show contents of object - in console
-      console.log(fiat);
 
-      // access objects properties by using 'dot' notation
-      var miles = fiat.mileage;
-      if (miles < 2000) {
-        buyIt();
+      function prequal(car) {
+        if (car.mileage > 10000) {
+          return false;
+        }
+        else if (car.year > 1960) {
+          return false;
+        }
+        return true;
       }
-      // chnage a property by assigning it a new value
-      fiat.mileage = 10000;
+      var worthALook = prequal(chevy);
 
-      // extend (or add to) an object by using a new name for poperty after dot
-      fiat.needsWashing = true;
-
-      // use objects properties just like variables, must use dot notation
-      if (fiat.year < 1965) {
-        classic = true;
+      if (worthALook) {
+        console.log("You gotta check out this " + chevy.make + " " + chevy.model);
       }
-      for (var i = 0; i < fiat.passengers; i++) {
-        addPersonToCar();
+      else {
+        console.log("You should really pass on the " + chevy.make + " " + chevy.model);
       }
-
-
 
 
 
