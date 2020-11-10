@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Eight Ball</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var eightBall = {
+        index: 0,
+        advice: ["yes", "no", "maybe", "not a chance"],
+        shake: function() {
+          this.index = this.index + 1;
+          if (this.index >= this.advice.length) {
+            this.index = 0;
+          }
+        },
+        look: function() {
+          return this.advice[this.index];
+        }
+      };
+
+      eightBall.shake();
+      console.log(eightBall.look());
+      eightBall.shake();
+      console.log(eightBall.look());
+      eightBall.shake();
+      console.log(eightBall.look());
+      eightBall.shake();
+      console.log(eightBall.look());
+      eightBall.shake();
+      console.log(eightBall.look());
+
+    </script>
+  </body>
+</html>
