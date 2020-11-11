@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Lie Detector</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function lieDetectorTest() {
+        var lies = 0;
+
+        var stolenDiamond = { };
+        if (stolenDiamond) {
+          console.log("You stole the diamond");
+          lies++;
+        }
+        var car = {
+          keysInPocket: null
+        };
+        if (car.keysInPocket) {
+          console.log("Uh oh, guess you stole the car!");
+          lies++;
+        }
+        // to be continued...
+      }
+    </script>
+  </body>
+</html>
