@@ -6,10 +6,12 @@
   </head>
   <body>
     <script type="text/javascript">
+
       function lieDetectorTest() {
         var lies = 0;
 
         var stolenDiamond = { };
+        // object = truthy, even an empty one!
         if (stolenDiamond) {
           console.log("You stole the diamond");
           lies++;
@@ -17,11 +19,39 @@
         var car = {
           keysInPocket: null
         };
+        // null = falsey
         if (car.keysInPocket) {
           console.log("Uh oh, guess you stole the car!");
           lies++;
         }
-        // to be continued...
+        // property does not exist = undefined = falsey
+        if (car.emptyGasTank) {
+          console.log("You drove the car after you stole it!");
+          lies++;
+        }
+        var foundYouAtTheCrimeScene = [ ];
+        // empty array = truthy
+        if (foundYouAtTheCrimeScene) {
+          console.log("A sure sign of guilt");
+          lies++;
+        }
+        // empty array != 0, false
+        if (foundYouAtTheCrimeScene [0]) {
+          console.log("Caught with a stolen item!");
+          lies++;
+        }
+        var yourName = " ";
+        // string with space is not empty = truthy
+        if (yourName) {
+          console.log("Guess you lied about your name");
+          lies++;
+        }
+        return lies;
+      }
+      var numberOfLies = lieDetectorTest();
+      console.log("You told " + numberOfLies + " lies!");
+      if (numberOfLies >= 3) {
+        console.log("Guilty as charged");
       }
     </script>
   </body>
