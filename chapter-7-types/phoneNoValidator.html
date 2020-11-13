@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Phone Number Validator</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Larry's first code
+      function validateL(phoneNumber) {
+        if (phoneNumber.length !== 8) {
+          return false;
+        }
+        for (var i = 0; i < phoneNumber.length; i++) {
+          if (i === 3) {
+            if (phoneNumber.charAt(i) !== "-") {
+              return false;
+            }
+          }
+          else if (isNaN(phoneNumber.charAt(i))) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // Larry's 2nd code
+      function validateL2(phoneNumber) {
+        if (phoneNumber.length > 8 || phoneNumber.length < 7) {
+          return false;
+        }
+        for (var i = 0; i < phoneNumber.length; i++) {
+          if (i === 3) {
+            if (phoneNumber.length === 8 && phoneNumber.charAt(i) !== "-") {
+              return false;
+            }
+            else if (phoneNumber.length === 7 && isNaN(phoneNumber.charAt(i))) {
+              return false;
+            }
+          }
+          else if (isNaN(phoneNumber.charAt(i))) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // Brad's first code
+      function validateB(phoneNumber) {
+        if (phoneNumber.length !== 8) {
+          return false;
+        }
+        var first = phoneNumber.substring(0,3);
+        var second = phoneNumber.substring(4);
+        if (phoneNumber.charAt(3) !== "-" || isNaN(first) || isNaN(second)) {
+          return false;
+        }
+        return true;
+      }
+
+      // Brad's second code
+      function validateB2(phoneNumber) {
+        if (phoneNumber.length > 8 || phoneNumber.length < 7) {
+          return false;
+        }
+        var first = phoneNumber.substring(0,3);
+        var second = phoneNumber.substring(phoneNumber.length - 4);
+
+        if (isNaN(first) || isNaN(second)) {
+          return false;
+        }
+        if (phoneNumber.length === 8) {
+          return (phoneNumber.charAt(3) === "-");
+        }
+        return true;
+      }
+
+      // there is a bug due to Brad's use of isNAN, what is it???
+      var phoneNumber = "1234567";
+
+      // Amy's solution
+      function validateA(phoneNumber) {
+        return phoneNumber.match(/^\d{3}-?\d{4}$/);
+      }
+
+      var isValidL = validateL(phoneNumber);
+      console.log("Larry says: ", isValidL);
+
+      var isValidB = validateB(phoneNumber);
+      console.log("Brad says: ", isValidB);
+
+      var isValidL2 = validateL2(phoneNumber);
+      console.log("Larry says: ", isValidL2);
+
+      var isValidB2 = validateB2(phoneNumber);
+      console.log("Brad says: ", isValidB2);
+
+      var isValidAmy = validateA(phoneNumber);
+      console.log("Amy says: ", isValidAmy);
+
+    </script>
+  </body>
+</html>
