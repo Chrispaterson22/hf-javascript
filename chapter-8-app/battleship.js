@@ -50,7 +50,41 @@ var model = {
       }
     }
     return true;
-  }
+  },
+
+  generateShipLocations: function() {
+    var locations;
+    for (var i = 0; i < this.numShips; i++) {
+      do {
+        locations = this.generateShip();
+      }
+      while (this.collision(locations));
+      this.ships[i].locations = locations;
+    }
+  },
+
+  generateShip: function() {
+    var direction = Math.floor(Math.random() * 2); // generate random number 0 or 1
+    var row;
+    var col;
+    if (direction === 1) {
+      // starting location for horizontal ship
+    }
+    else {
+      // starting location for vertical ship.
+    }
+    var newShipLocations = []; // empty array for new ship loc
+    for (var i = 0; i < this.shipLength; i++) { // loop for number of lactions in a ship
+      if (direction === 1) { // need diff code for horizontal/vert ship orientation
+
+      }
+      else {
+
+      }
+    }
+    return newShipLocations;
+
+  },
 };
 
 var controller = {
@@ -93,6 +127,30 @@ function parseGuess(guess) {
   }
   return null; // if get here there was a failed check, so return null
 }
+
+function init() {
+  var fireButton = document.getElementById("fireButton");
+  fireButton.onclick = handleFireButton;
+  var guessInput = document.getElementById("guessInput");
+  guessInput.onkeypress = handleKeyPress; // key press event handler
+}
+
+function handleFireButton() {
+  var guessInput = document.getElementById("guessInput"); // get reference to input form element
+  var guess = guessInput.value; // store guess from guess input
+  controller.processGuess(guess); // passing players guess to controller
+  guessInput.value = ""; // reset form input to empty string
+}
+
+function handleKeyPress(e) {
+  var fireButton = document.getElementById("fireButton");
+  if (e.keyCode === 13) { // keyCode for RETURN is 13.
+    fireButton.click(); // if RETURN 13, then act like fire button clicked
+    return false; // ret false to stop any further actions
+  }
+}
+
+window.onload = init;
 
 // test code for view object
 /*
