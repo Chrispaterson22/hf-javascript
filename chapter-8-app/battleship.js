@@ -19,9 +19,9 @@ var model = {
   shipLength: 3,
   shipsSunk: 0,
 
-  ships: [{locations: ["06", "16", "26"], hits: ["", "", ""]},
-          {locations: ["24", "34", "44"], hits: ["", "", ""]},
-          {locations: ["10", "11", "12"], hits: ["", "", ""]}],
+  ships: [{locations: [0, 0, 0], hits: ["", "", ""]},
+          {locations: [0, 0, 0], hits: ["", "", ""]},
+          {locations: [0, 0, 0], hits: ["", "", ""]}],
 
   fire: function (guess) {
     for (var i = 0; i < this.numShips; i++) {
@@ -68,23 +68,38 @@ var model = {
     var row;
     var col;
     if (direction === 1) {
-      // starting location for horizontal ship
+      row = Math.floor(Math.random() * this.boardSize);
+      col = Math.floor(Math.random() * (this.boardSize - (this.shipLength + 1))); // to gen random no. between 0-4 (based on boardSize = 7)
     }
     else {
-      // starting location for vertical ship.
+      row = Math.floor(Math.random() * (this.boardSize - (this.shipLength + 1)));
+      col = Math.floor(Math.random() * this.boardSize);
     }
     var newShipLocations = []; // empty array for new ship loc
     for (var i = 0; i < this.shipLength; i++) { // loop for number of lactions in a ship
       if (direction === 1) { // need diff code for horizontal/vert ship orientation
-
+        newShipLocations.push(row + "" + (col + i)); // + i used to add additional locations as iterates through ship length.
       }
       else {
-
+        newShipLocations.push((row + i) + "" + col);
       }
     }
     return newShipLocations;
 
   },
+
+  collision: function(locations) {
+    for (var i = 0; i < this.numShips; i++) {
+      var ship = this.ships[i];
+      for (var j = 0; j < locations.length; j++) {
+        if (ship.locations.indexOf(locations[j]) >= 0) { // iterating through ships locations array and checking for var locations allready in array.
+          return true;
+        }
+      }
+
+    }
+    return false; // there was no collision
+  }
 };
 
 var controller = {
@@ -133,6 +148,7 @@ function init() {
   fireButton.onclick = handleFireButton;
   var guessInput = document.getElementById("guessInput");
   guessInput.onkeypress = handleKeyPress; // key press event handler
+  model.generateShipLocations(); // generate ship locs on init
 }
 
 function handleFireButton() {
