@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Image Guess</title>
+    <title>Image Guess with Mouse</title>
     <style>
       body {
         margin: 20px;
@@ -16,7 +16,8 @@
       function init() {
         var images = document.getElementsByTagName("img");
         for (var i = 0; i < images.length; i++) {
-          images[i].onclick = showAnswer;
+          images[i].onmouseover = showAnswer;
+          images[i].onmouseout = reblur;
         }
       }
       function showAnswer(eventObj) {
@@ -24,10 +25,10 @@
         var name = image.id;
         name = "images/" + name + ".jpg";
         image.src = name;
-        setTimeout(reblur, 2000, image); // as well as calling to reblur after 2sec, we pass argument image which is the image to reblur
       }
 
-      function reblur(image) {
+      function reblur(eventObj) {
+        var image = eventObj.target;
         var name = image.id;
         name = "images/" + name + "blur.jpg";
         image.src = name;
