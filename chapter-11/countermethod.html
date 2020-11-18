@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Counter</title>
+    <script type="text/javascript">
+      function makeCounter() {
+        var count = 0;
+
+        return {
+          increment: function() {
+            count++;
+            return count;
+          }
+        };
+      }
+      var counter = makeCounter();
+      console.log(counter.increment());
+      console.log(counter.increment());
+      console.log(counter.increment());
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

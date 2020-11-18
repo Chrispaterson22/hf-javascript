@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cookies are Done!</title>
+    <script type="text/javascript">
+      function handler() {
+        alert(doneMessage);
+      }
+
+      function makeTimer(doneMessage, n) {
+        setTimeout(handler, n);
+      }
+      makeTimer("Cookies are done!", 1000);
+      // this is brain power question, asking what above would do. it doesnt work
+      // as doneMessage is not defined at line 8 in handler function. handler function
+      // can't 'see' doneMessage passed to makeTimer.
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
