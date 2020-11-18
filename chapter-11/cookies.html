@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>cookies</title>
+    <style media="screen">
+      #bake {
+        padding: 5px 10px;
+      }
+    </style>
+    <script type="text/javascript">
+      // original code SYP p916
+      /*
+      window.onload = init;
+
+      var cookies = {
+        instructions: "Preheat oven to 350...",
+        bake: function (time) {
+                console.log("Baking the cookies");
+                setTimeout(done, time);
+        }
+      };
+
+      function init() {
+        var button = document.getElementById("bake");
+        button.onclick = handleButton;
+      }
+      function handleButton() {
+        console.log("Time to bake the cookies.");
+        cookies.bake(2500);
+      }
+      function done() {
+        alert("Cookies are ready, take them out to cool.");
+        console.log("Cooling the cookies.");
+        var cool = function() {
+          alert("Cookies are cool, time to eat!");
+        };
+        setTimeout(cool, 1000);
+      }
+      */
+      // re-worked code:
+
+      window.onload = function() {
+        var button = document.getElementById("bake");
+        button.onclick = function() {
+          console.log("Time to bake the cookies.");
+          cookies.bake(2500);
+        }
+      }
+
+      var cookies = {
+        instructions: "Preheat oven to 350...",
+        bake: function (time) {
+                console.log("Baking the cookies");
+                setTimeout(done, time);
+              }
+      };
+
+      function done() {
+        alert("Cookies are ready, take them out to cool.");
+        console.log("Cooling the cookies.");
+        var cool = setTimeout(function() {
+          alert("Cookies are cool, time to eat!");
+        }, 1000);
+      }
+      
+    </script>
+  </head>
+  <body>
+    <button type="button" name="button" id="bake">Bake!</button>
+  </body>
+</html>
