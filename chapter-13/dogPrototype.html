@@ -53,13 +53,13 @@
 
       // add new showDog prototype that extends on the Dog Prototype
       function ShowDog(name, breed, weight, handler) {
-        this.name = name;
-        this.breed = breed;
-        this.weight = weight;
+        Dog.call(this, name, breed, weight); // gets these from Dog constructor and sets this to ShowDog instance
         this.handler = handler;
       }
 
       ShowDog.prototype = new Dog(); // this links showdog proto to dog proto, showDog is instance of Dog
+
+      ShowDog.prototype.constructor = ShowDog; // setting showDog constructor to correct value, otherwise it will use Dog as value.
 
       ShowDog.prototype.league = "Webville";
 
@@ -80,11 +80,43 @@
       };
 
       var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+      var beatrice = new ShowDog("Beatrice", "Pomeranian", 5, "Hamilton");
 
+      // more test code for final code version
+      fido.bark();
+      fluffy.bark();
+      spot.bark();
+      scotty.bark();
+      beatrice.bark();
+      scotty.gait("Walk");
+      beatrice.groom();
+
+      /* test code
+      // check if dog or show dog using instanceof
+      if (fido instanceof Dog) {
+        console.log("Fido is a Dog");
+      }
+      if (fido instanceof ShowDog) {
+        console.log("Fido is a ShowDog");
+      }
+
+      if (scotty instanceof Dog) {
+        console.log("Scotty is a Dog");
+      }
+      if (scotty instanceof ShowDog) {
+        console.log("Scotty is a ShowDog");
+      }
+
+      console.log("Fido constructor is " + fido.constructor);
+      console.log("Scotty constructor is " + scotty.constructor);
+      */
+
+      /* test code
       scotty.stack();
       scotty.bark();
       console.log(scotty.league);
       console.log(scotty.species);
+      */
 
       /* test code
       barnaby.sit();
